@@ -1,1 +1,3 @@
-# Born2beroot
+# Born2beRoot
+
+A system administration related exercise.
