@@ -17,10 +17,10 @@ wall -n "\
 #Architecture: $(uname -a)
 #CPU physical: $(grep "physical id" /proc/cpuinfo | sort | uniq | wc -l) 
 #vCPU: $(grep "processor" /proc/cpuinfo | sort | uniq | wc -l)
-#Memory Usage: $ram_used/$ram_total "$ram_percent"
-#Disk Usage: "$disk_used/$disk_total" "$disk_percent"
+#Memory Usage: $ram_used/$ram_total ($ram_percent)
+#Disk Usage: "$disk_used/$disk_total" ($disk_percent)
 #CPU load: $(mpstat | awk 'NR == 4 {printf "%.1f%%", 100-$13}')
-#Last boot: $(who -b| awk '$1 == "system" {print $3} {print $4}')
+#Last boot: $(who -b| awk '$1 == "system" {printf "%s%s%s", $3 " " $4}')
 #LVM use: $(if [ $lvm_check == 0 ]; then echo no; else echo yes; fi)
 #Connexions TCP: $(ss -s | awk '/TCP:/ {print $2}')
 #User log: $(who | wc -l)
