@@ -17,6 +17,15 @@ Um software chamado de [hypervisor] separa do hardware os recursos utilizados pe
 O sistema escolhido para execução deste exercicio, foi o [Debian] 11 stable,
 e o hypervisor utilizado foi o [VirtualBox].
 
+## Comandos Uteis
+#### Usuários e Grupos
+```shell
+adduser <username> #add a new user
+usermod -aG <groupname> <username> #add user to an existing group
+groups <username> #check if user belongs to any groups
+groupadd <groupname> #add a new group
+passwd <username> #change user password```
+
 
 ## Partições
 
