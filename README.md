@@ -74,7 +74,7 @@ Sempre que invocado a partir da linha de comando junto com a especificação do 
 ### Aptitude
 [Aptitude] é um front-end criado pela equipe do Debian, para uma ferramenta de empacotamento avançada que adiciona uma interface de usuário à funcionalidade, permitindo ao usuário pesquisar interativamente por um pacote e instalá-lo ou removê-lo.
 Além da principal diferença ser que o Aptitude é um gerenciador de pacotes de alto nível, enquanto o APT é um gerenciador de pacotes de nível inferior que pode ser usado por outros gerenciadores de pacotes de nível superior.
-A diferença mais óbvia é que aptitudefornece uma interface de menu de terminal (semelhante ao Synaptic em um terminal), enquanto apt não fornece.
+A diferença mais óbvia é que aptitude fornece uma interface de menu de terminal (semelhante ao Synaptic em um terminal), enquanto apt não fornece.
 
 Para instalar o aptitude utilize o comando:
 ```
@@ -116,7 +116,7 @@ Para habilitar o ufw ao iniciar o sistema:
 ```
 
 ## SSH (Secure Socket Shell)
-O SSH é um protocolo que garante que cliente e servidor remoto troquem informações de maneira segura e dinâmica. O processo é capaz de criptografar os arquivos enviados ao diretório do servidor, garantindo que alterações e o envio de dados sejam realizados da melhor forma.<br>
+O SSH é um protocolo que garante que cliente e servidor remoto troquem informações de maneira segura e dinâmica. O processo pode criptografar os arquivos enviados ao diretório do servidor, garantindo que alterações e o envio de dados sejam realizados da melhor forma.<br>
 O protocolo [SSH] é um dos parâmetros de trabalho que garantem que as informações estarão **devidamente protegidas**.
 SSH é uma sigla, ou acrônimo, para o termo secure shell, que significa cápsula segura. Na prática, o protocolo SSH é um mecanismo de segurança oferecido pelos serviços de hospedagem.<br>
 A função dele é garantir que haja uma conexão segura entre o computador e o servidor remoto, o que garante a transferência de dados sem nenhuma perda de informação.<br>
