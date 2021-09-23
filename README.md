@@ -65,7 +65,62 @@ Para instalar o aptitude utilize o comando:
 ```
     apt install aptitude
 ```
+## AppArmor
+[AppArmor] é um sistema de Controle de Acesso Mandatório (MAC - Mandatory Access Control) construído sobre a interface LSM (Linux Security Modules) do Linux. Na prática, o kernel consulta o AppArmor antes de cada chamada do sistema para saber se o processo está autorizado a fazer a operação dada. Através desse mecanismo, o AppArmor confina programas a um conjunto limitado de recursos. 
+É semelhante ao SELinux, usado por padrão no Fedora e no Red Hat. Embora funcionem de forma diferente, o AppArmor e o SELinux fornecem segurança de “controle de acesso obrigatório” (MAC). Na verdade, o AppArmor permite que os desenvolvedores do Debian restrinjam as ações que os processos podem realizar. 
 
+Para instalar o AppArmor utilize o comando:
+```
+    aptitude install apparmor
+```
+Para habilitar o AppArmor utilize o comando:
+```
+    aa-status 
+    systemctl enable apparmor
+```
+
+## UFW (Uncomplicated Firewall)
+Para instalar e habilitar o ufw utilize os comandos:
+```
+    aptitude install ufw
+    aa-status 
+    systemctl enable apparmor
+```
+
+O UFW, ou Uncomplicated Firewall, é uma interface de gerenciamento simplificado de firewall que esconde a complexidade das tecnologias de filtragem de pacotes de baixo nível, como iptables e nftables.
+
+Para adicionar uma nova porta utilize o comando:
+```
+    ufw allow "porta"
+    aa-status 
+    systemctl enable apparmor
+```
+Para habilitar o ufw ao iniciar o sistema:
+```
+    systemctl enable ufw
+```
+
+## SSH (Secure Socket Shell)
+O SSH é um protocolo que garante que cliente e servidor remoto troquem informações de maneira segura e dinâmica. O processo é capaz de criptografar os arquivos enviados ao diretório do servidor, garantindo que alterações e o envio de dados sejam realizados da melhor forma.<br>
+O protocolo [SSH] é um dos parâmetros de trabalho que garantem que as informações estarão **devidamente protegidas**.
+SSH é uma sigla, ou acrônimo, para o termo secure shell, que significa cápsula segura. Na prática, o protocolo SSH é um mecanismo de segurança oferecido pelos serviços de hospedagem.<br>
+A função dele é garantir que haja uma conexão segura entre o computador e o servidor remoto, o que garante a transferência de dados sem nenhuma perda de informação.<br>
+O SSH tem a função de permitir aos usuários e desenvolvedores realizarem qualquer modificação em sites e servidores utilizando uma conexão simples.<br>
+Para instalar o ssh utilize os comandos:
+```
+    aptitude install openssh-server 
+    aptitude install openssh-client
+    systemctl start sshd
+    systemctl enable sshd
+```
+Para configuração do ssh adicione as linhas abaixo ao arquivo `/etc/ssh/sshd_config`.
+```
+    Port 4242
+    PermitRootLogin no
+```
+
+[SSH]:<https://rockcontent.com/br/blog/ssh/>
+[AppArmor]:<https://www.thefastcode.com/pt-eur/article/what-is-apparmor-and-how-does-it-keep-ubuntu-secure?>
 [Aptitude]:<https://pt.linux-console.net/?p=1375>
 [(Linux Console, 2021)]:<https://pt.linux-console.net/?p=1375>
 [Debian]:<https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/>
