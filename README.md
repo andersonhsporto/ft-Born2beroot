@@ -23,10 +23,10 @@ e o hypervisor utilizado foi o [VirtualBox].
 Para visualizar a tabela de partições utilize o comando:
 
 ```
-    lsblk
+lsblk
 ```
 
-Utilizando o LVM foi criado a seguinte tabela de partições.
+Utilizando o LVM foi criado a seguinte estrutura de partições.
 ```
 NAME                    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
 sda                       8:0    0 30.8G  0 disk  
@@ -49,6 +49,21 @@ Para as operações de gestão de pacotes que envolvam a instalação ou atualiz
 Para este projeto a lista de pacotes abaixo foi adicionada ao `/etc/apt/sources.list`.
 ```
     deb http://ftp.debian.org/debian stable main contrib non-free
+```
+## Configurar ip estático
+
+Com a placa de rede configurada como "bridge" no hypervisor execute o seguinte commando para desabilitar o dhcp e manter o ip como estático. 
+
+Comando para instalar o `net-tools`
+```
+    apt install net-tools
+```
+Após instalar o net-tools adicione as linhas abaixo ao arquivo `/etc/network/interfaces`.
+```
+iface ... inet static
+address (endereço de ip no meu caso 192.168.1.102)
+gateway (gateway no meu caso 192.168.1.1)
+netmask (mascara de rede no meu caso 255.255.255.0)
 ```
 
 ### Apt
@@ -118,7 +133,34 @@ Para configuração do ssh adicione as linhas abaixo ao arquivo `/etc/ssh/sshd_c
     Port 4242
     PermitRootLogin no
 ```
+Após editar o arquivo execute `systemctl restart sshd` para atualizar as configurações do ssh.
 
+Para conectar a VM utilizando o ssh execute o comando abaixo utilizando suas configurações de rede e usuário.
+
+No meu caso o comando foi:
+```
+    ssh anhigo-s@192.168.1.100 -p 4242
+```
+## Sudo
+
+Este comando permite executar um comando como se fosse o superusuário (root) ou um outro usuário.<br>
+Algumas opções do [comando]:
+
+   - -h  exibe as opções do comando.
+   - -l  lista os comandos permitidos (e os comandos proibidos) para o usuário no ambiente de trabalho atual.
+   - -u usuário : o sudo executa o comando com os privilégios do usuário especificado.
+  - -V : fornece informações sobre o comando.
+    
+
+No debian o sudo não vêm instalado no sistema, para instalar execute o comando abaixo:
+```
+    aptitude install sudo
+```
+Após a instalação execute os comandos abaixo para criar a pasta e o softlink necessário para executar o [sudoreplay].
+
+
+[sudoreplay]:<https://www.sudo.ws/man/1.8.13/sudoreplay.man.html>
+[comando]:<https://guialinux.uniriotec.br/sudo/>
 [SSH]:<https://rockcontent.com/br/blog/ssh/>
 [AppArmor]:<https://www.thefastcode.com/pt-eur/article/what-is-apparmor-and-how-does-it-keep-ubuntu-secure?>
 [Aptitude]:<https://pt.linux-console.net/?p=1375>
