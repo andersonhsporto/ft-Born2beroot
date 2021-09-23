@@ -18,20 +18,22 @@ O sistema escolhido para execução deste exercicio, foi o [Debian] 11 stable,
 e o hypervisor utilizado foi o [VirtualBox].
 
 ## Comandos Uteis
+
 #### Usuários e Grupos
 ```shell
 adduser <username> #add a new user
 usermod -aG <groupname> <username> #add user to an existing group
 groups <username> #check if user belongs to any groups
 groupadd <groupname> #add a new group
-passwd <username> #change user password```
+passwd <username> #change user password
+```
 
 
 ## Partições
 
 Para visualizar a tabela de partições utilize o comando:
 
-```
+```shell
 lsblk
 ```
 
@@ -56,7 +58,7 @@ As operações de gestão de pacotes baseadas em repositório no sistema Debian 
 Para as operações de gestão de pacotes que envolvam a instalação ou atualização de meta-dados do pacote, necessita de ter privilégios de root.
 
 Para este projeto a lista de pacotes abaixo foi adicionada ao `/etc/apt/sources.list`.
-```
+```shell
     deb http://ftp.debian.org/debian stable main contrib non-free
 ```
 ## Configurar ip estático
@@ -86,7 +88,7 @@ Além da principal diferença ser que o Aptitude é um gerenciador de pacotes de
 A diferença mais óbvia é que aptitudefornece uma interface de menu de terminal (semelhante ao Synaptic em um terminal), enquanto apt não fornece.
 
 Para instalar o aptitude utilize o comando:
-```
+```shell
     apt install aptitude
 ```
 ## AppArmor
@@ -94,18 +96,18 @@ Para instalar o aptitude utilize o comando:
 É semelhante ao SELinux, usado por padrão no Fedora e no Red Hat. Embora funcionem de forma diferente, o AppArmor e o SELinux fornecem segurança de “controle de acesso obrigatório” (MAC). Na verdade, o AppArmor permite que os desenvolvedores do Debian restrinjam as ações que os processos podem realizar. 
 
 Para instalar o AppArmor utilize o comando:
-```
+```shell
     aptitude install apparmor
 ```
 Para habilitar o AppArmor utilize o comando:
-```
+```shell
     aa-status 
     systemctl enable apparmor
 ```
 
 ## UFW (Uncomplicated Firewall)
 Para instalar e habilitar o ufw utilize os comandos:
-```
+```shell
     aptitude install ufw
     aa-status 
     systemctl enable apparmor
@@ -114,13 +116,13 @@ Para instalar e habilitar o ufw utilize os comandos:
 O UFW, ou Uncomplicated Firewall, é uma interface de gerenciamento simplificado de firewall que esconde a complexidade das tecnologias de filtragem de pacotes de baixo nível, como iptables e nftables.
 
 Para adicionar uma nova porta utilize o comando:
-```
+```shell
     ufw allow "porta"
     aa-status 
     systemctl enable apparmor
 ```
 Para habilitar o ufw ao iniciar o sistema:
-```
+```shell
     systemctl enable ufw
 ```
 
@@ -131,14 +133,14 @@ SSH é uma sigla, ou acrônimo, para o termo secure shell, que significa cápsul
 A função dele é garantir que haja uma conexão segura entre o computador e o servidor remoto, o que garante a transferência de dados sem nenhuma perda de informação.<br>
 O SSH tem a função de permitir aos usuários e desenvolvedores realizarem qualquer modificação em sites e servidores utilizando uma conexão simples.<br>
 Para instalar o ssh utilize os comandos:
-```
+```shell
     aptitude install openssh-server 
     aptitude install openssh-client
     systemctl start sshd
     systemctl enable sshd
 ```
 Para configuração do ssh adicione as linhas abaixo ao arquivo `/etc/ssh/sshd_config`.
-```
+```shell
     Port 4242
     PermitRootLogin no
 ```
@@ -147,7 +149,7 @@ Após editar o arquivo execute `systemctl restart sshd` para atualizar as config
 Para conectar a VM utilizando o ssh execute o comando abaixo utilizando suas configurações de rede e usuário.
 
 No meu caso o comando foi:
-```
+```shell
     ssh anhigo-s@192.168.1.100 -p 4242
 ```
 ## Sudo
@@ -162,16 +164,16 @@ Algumas opções do [comando]:
     
 
 No debian o sudo não vêm instalado no sistema, para instalar execute o comando abaixo:
-```
+```shell
     aptitude install sudo
 ```
 Após a instalação execute os comandos abaixo para criar a pasta onde serão armazenados os arquivos e diretórios de log e o softlink necessário para executar o [sudoreplay].
-```
+```shell
     mkdir /var/log/sudo
     ln -s /var/log/sudo /var/log/sudo-io
 ```
 Para configurar o sudo conforme os parâmetros do exercício, execute o comando `visudo` e adicione as linhas abaixo ao arquivo.
-```
+```shell
     Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
     Defaults	requiretty
     Defaults	passwd_tries=3
