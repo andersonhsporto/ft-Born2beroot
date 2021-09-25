@@ -198,14 +198,14 @@ Neste exercício a politica de senha foi:
 - Não pode incluir o nome do usuário.
 - Deve ter pelo menos 7 caracteres que não fazem parte da senha anterior (não se aplica ao root).
 
-Edite as seguintes linhas no arquivo `/etc/login.defs`.
+Adicionar as seguintes linhas no arquivo `/etc/login.defs`.
 ```
     PASS_MAX_DAYS   30
     PASS_MIN_DAYS   2
     PASS_WARN_AGE   7
     LOGIN_RETRIES   3
 ```
-Edite as seguintes linhas no arquivo `etc/security/pwquality.conf`.
+Adicionar as seguintes linhas no arquivo `etc/security/pwquality.conf`.
 ```
     difok = 7
     minlen = 10
