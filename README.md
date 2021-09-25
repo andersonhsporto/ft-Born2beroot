@@ -195,4 +195,4 @@ Para configurar o sudo conforme os parâmetros do exercício, execute o comando 
 [(ALVES, 2010)]: <https://www.gta.ufrj.br/ensino/eel879/trabalhos_vf_2010_2/luizaugusto/index.htm>
 [VirtualBox]: <https://www.makeuseof.com/tag/reasons-start-using-virtual-machine/>
 [hypervisor]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-hypervisor>
-[máquina virtual]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-virtual-machine>
+[máquina virtual]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-virtual-machine><
