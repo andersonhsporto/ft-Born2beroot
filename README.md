@@ -21,11 +21,11 @@ e o hypervisor utilizado foi o [VirtualBox].
 
 #### Usuários e Grupos
 ```shell
-adduser <username> #add a new user
-usermod -aG <groupname> <username> #add user to an existing group
-groups <username> #check if user belongs to any groups
-groupadd <groupname> #add a new group
-passwd <username> #change user password
+adduser <username> #Adicionar usuario
+usermod -aG <groupname> <username> #Adicionar usuario a um grupo
+groups <username> #Verificar grupos de determinado usuario
+groupadd <groupname> #addicionar novogrupo
+passwd <username> #Trocar senha
 ```
 
 
@@ -34,7 +34,7 @@ passwd <username> #change user password
 Para visualizar a tabela de partições utilize o comando:
 
 ```shell
-lsblk
+    lsblk
 ```
 
 Utilizando o LVM foi criado a seguinte estrutura de partições.
@@ -183,7 +183,42 @@ Para configurar o sudo conforme os parâmetros do exercício, execute o comando 
     Defaults	log_year
     Defaults	iolog_dir=/var/log/sudo
 ```
+## Política de senhas
 
+[Política de senhas] corporativas envolve regras que devem ser seguidas por todos os usuários, além de garantir que uma equipe seja responsável por realizar o monitoramento de todos os acessos. <br>
+Ela ainda visa assegurar que critérios mínimos de segurança durante o acesso aos sistemas e dispositivos corporativos sejam seguidos.<br>
+
+Neste exercício a politica de senha foi:
+
+- Expirar a cada 30 dias
+- Número mínimo de 2 dias para alterar a senha.
+- O usuário tem que receber uma mensagem de aviso 7 dias antes de sua senha expirar.
+- A senha deve ter pelo menos 10 caracteres. Deve conter pelo menos uma letra maiúscula e um número.
+- Não pode conter 3 caracteres consecutivos iguais.
+- Não pode incluir o nome do usuário.
+- Deve ter pelo menos 7 caracteres que não fazem parte da senha anterior (não se aplica ao root).
+
+Edite as seguintes linhas no arquivo `/etc/login.defs`.
+```
+    PASS_MAX_DAYS   30
+    PASS_MIN_DAYS   2
+    PASS_WARN_AGE   7
+    LOGIN_RETRIES   3
+```
+Edite as seguintes linhas no arquivo `etc/security/pwquality.conf`.
+```
+    difok = 7
+    minlen = 10
+    dcredit = -1
+    ucredit = -1
+    maxrepeat = 3
+    usercheck = 1
+    retry = 3
+    enforce_for_root
+```
+
+
+[política de senhas]:<https://digital.br.synnex.com/pt/8-melhores-praticas-para-uma-politica-de-senhas-eficaz>
 [sudoreplay]:<https://www.sudo.ws/man/1.8.13/sudoreplay.man.html>
 [comando]:<https://guialinux.uniriotec.br/sudo/>
 [SSH]:<https://rockcontent.com/br/blog/ssh/>
@@ -195,4 +230,4 @@ Para configurar o sudo conforme os parâmetros do exercício, execute o comando 
 [(ALVES, 2010)]: <https://www.gta.ufrj.br/ensino/eel879/trabalhos_vf_2010_2/luizaugusto/index.htm>
 [VirtualBox]: <https://www.makeuseof.com/tag/reasons-start-using-virtual-machine/>
 [hypervisor]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-hypervisor>
-[máquina virtual]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-virtual-machine><
+[máquina virtual]: <https://www.redhat.com/pt-br/topics/virtualization/what-is-a-virtual-machine>
