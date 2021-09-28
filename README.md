@@ -25,6 +25,8 @@ adduser <username> #Adicionar usuario
 usermod -aG <groupname> <username> #Adicionar usuario a um grupo
 groups <username> #Verificar grupos de determinado usuario
 groupadd <groupname> #addicionar novogrupo
+hostnamectl status - mostrar o hostname
+hostnamectl set-hostname <new-hostname> - mudar senha
 passwd <username> #Trocar senha
 ```
 
