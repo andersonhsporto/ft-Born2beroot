@@ -121,7 +121,7 @@ Para adicionar uma nova porta utilize o comando:
 ```shell
     ufw allow "porta"
     aa-status 
-    systemctl enable apparmor
+    systemctl enable ufw
 ```
 Para habilitar o ufw ao iniciar o sistema:
 ```shell
