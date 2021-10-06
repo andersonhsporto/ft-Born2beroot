@@ -75,10 +75,10 @@ Após instalar o net-tools adicione as linhas abaixo ao arquivo `/etc/network/in
 ```
 *exemplo utilizando a minha rede local!
 
-iface ... inet static
-address "192.168.1.102"
-gateway "192.168.1.1"
-netmask "255.255.255.0"
+    iface ... inet static
+    address "192.168.1.102"
+    gateway "192.168.1.1"
+    netmask "255.255.255.0"
 ```
 
 ### Apt
