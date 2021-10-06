@@ -196,11 +196,11 @@ Neste exercício a politica de senha foi:
 
 - Expirar a cada 30 dias
 - Número mínimo de 2 dias para alterar a senha.
-- O usuário tem que receber uma mensagem de aviso 7 dias antes de sua senha expirar.
-- A senha deve ter pelo menos 10 caracteres. Deve conter pelo menos uma letra maiúscula e um número.
-- Não pode conter 3 caracteres consecutivos iguais.
-- Não pode incluir o nome do usuário.
-- Deve ter pelo menos 7 caracteres que não fazem parte da senha anterior (não se aplica ao root).
+- O usuário recebe uma mensagem de aviso 7 dias antes de sua senha expirar.
+- A senha deve conter pelo menos 10 caracteres. A senha deve ter pelo menos uma letra maiúscula e um número.
+- Não pode ter 3 caracteres consecutivos iguais.
+- A senha não pode incluir o nome do usuário.
+- Deve ter pelo menos 7 caracteres que não fazem parte da senha anterior (não se aplica ao root *difok).
 
 Adicionar as seguintes linhas no arquivo `/etc/login.defs`.
 ```
