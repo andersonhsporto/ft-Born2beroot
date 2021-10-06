@@ -73,10 +73,12 @@ Comando para instalar o `net-tools`
 ```
 Após instalar o net-tools adicione as linhas abaixo ao arquivo `/etc/network/interfaces`.
 ```
+*exemplo utilizando a minha rede local!
+
 iface ... inet static
-address (endereço de ip no meu caso 192.168.1.102)
-gateway (gateway no meu caso 192.168.1.1)
-netmask (mascara de rede no meu caso 255.255.255.0)
+address "192.168.1.102"
+gateway "192.168.1.1"
+netmask "255.255.255.0"
 ```
 
 ### Apt
