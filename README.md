@@ -113,8 +113,7 @@ Para habilitar o AppArmor utilize o comando:
 Para instalar e habilitar o ufw utilize os comandos:
 ```shell
     aptitude install ufw
-    aa-status 
-    systemctl enable apparmor
+    systemctl enable ufw
 ```
 
 O UFW, ou Uncomplicated Firewall, é uma interface de gerenciamento simplificado de firewall que esconde a complexidade das tecnologias de filtragem de pacotes de baixo nível, como iptables e nftables.
@@ -122,7 +121,6 @@ O UFW, ou Uncomplicated Firewall, é uma interface de gerenciamento simplificado
 Para adicionar uma nova porta utilize o comando:
 ```shell
     ufw allow "porta"
-    aa-status 
     systemctl enable ufw
 ```
 Para habilitar o ufw ao iniciar o sistema:
