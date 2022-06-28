@@ -25,9 +25,9 @@ e o hypervisor utilizado foi o [VirtualBox].
 adduser <username> #Adicionar usuario
 usermod -aG <groupname> <username> #Adicionar usuario a um grupo
 groups <username> #Verificar grupos de determinado usuario
-groupadd <groupname> #addicionar novogrupo
-hostnamectl status #mostrar o hostname
-hostnamectl set-hostname <new-hostname> #mudar senha
+groupadd <groupname> #Adicionar novogrupo
+hostnamectl status #Mostrar o hostname
+hostnamectl set-hostname <new-hostname> #Alterar hostname
 passwd <username> #Trocar senha
 ```
 
